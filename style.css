@@ -1,0 +1,126 @@
+/* Samira's Little Museum of Love — burgundy / cream / gold */
+:root{--bur:#641E2B;--cream:#F7EBDD;--gold:#C6A15B;--wine:#35131D;--beige:#E8D6BC}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%}
+body{font-family:'Cairo',Tahoma,sans-serif;background:radial-gradient(circle at 50% 0,var(--bur),var(--wine) 75%) fixed;color:var(--cream);line-height:1.9;overflow-x:hidden}
+#particles{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+#particles span{position:absolute;bottom:-30px;animation:rise linear infinite;opacity:.7}
+@keyframes rise{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+.music{position:fixed;top:14px;left:14px;z-index:20;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);background:var(--wine);color:var(--gold);font-size:1.2rem;cursor:pointer}
+.music.off{opacity:.5;text-decoration:line-through}
+/* scenes fade between each other */
+.scene{position:relative;z-index:1;display:none;min-height:100vh;padding:70px 18px 40px;text-align:center}
+.scene.active{display:block;animation:fade .9s ease}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}}
+#entrance.active{display:flex;align-items:center;justify-content:center}
+.spot{position:absolute;top:0;left:50%;width:70vmin;height:70vmin;transform:translateX(-50%);background:radial-gradient(circle,rgba(198,161,91,.3),transparent 65%)}
+.door{position:relative;max-width:520px;padding:10px;border:2px solid var(--gold);border-radius:240px 240px 12px 12px;background:var(--wine);box-shadow:0 0 60px rgba(198,161,91,.3)}
+.arch{border:1px dashed var(--gold);border-radius:230px 230px 6px 6px;padding:70px 26px 40px}
+h1{font-size:clamp(1.5rem,5vw,2.2rem);color:var(--gold);margin-bottom:12px;font-weight:800}
+.title{color:var(--gold);font-size:2rem;margin-bottom:24px}
+.btn{margin-top:22px;padding:12px 32px;border-radius:40px;border:1px solid var(--gold);background:linear-gradient(var(--gold),#a8823d);color:var(--wine);font:800 1.05rem 'Cairo';cursor:pointer;transition:.3s}
+.btn:hover{transform:scale(1.06);box-shadow:0 0 24px var(--gold)}
+.btn.ghost{background:none;color:var(--gold)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;max-width:1000px;margin:0 auto 30px}
+.card{background:rgba(53,19,29,.85);border:1px solid var(--gold);border-radius:6px;padding:16px;outline:4px double rgba(198,161,91,.35);outline-offset:-10px}
+.card small{color:var(--beige)}
+.card h3{color:var(--gold);margin:8px 0}
+.card p{font-size:.95rem}
+/* picture frames: contain so the gift is never cropped */
+.frame{position:relative;margin:0 auto;max-width:420px;min-height:200px;padding:12px;background:var(--beige);border:8px double var(--gold);box-shadow:0 0 0 4px var(--wine),0 0 40px rgba(198,161,91,.45);animation:glow 3s ease-in-out infinite alternate}
+.frame.wide{max-width:640px;margin-top:10px}
+.frame img{display:block;width:100%;max-height:340px;object-fit:contain}
+.ph{display:none;padding:50px 10px;color:var(--bur);font-weight:600;border:2px dashed var(--bur)}
+.frame.missing img{display:none}.frame.missing .ph{display:block}
+@keyframes glow{to{box-shadow:0 0 0 4px var(--wine),0 0 70px rgba(198,161,91,.8)}}
+.letter-art{font-size:4rem;padding:20px 0;filter:drop-shadow(0 0 14px var(--gold));animation:beat 1.6s infinite}
+@keyframes beat{50%{transform:scale(1.12)}}
+.detail-box{max-width:640px;margin:0 auto}
+.detail-box h2{color:var(--gold);font-size:clamp(1.5rem,5vw,2rem);margin:24px 0 14px}
+.detail-box p{margin-bottom:14px;font-size:1.08rem;animation:fade 1s both}
+.envelope{position:relative;width:240px;height:160px;margin:20px auto;background:var(--beige);border:2px solid var(--gold);border-radius:6px;box-shadow:0 0 40px rgba(198,161,91,.5)}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom right,transparent 49%,var(--gold) 50%,transparent 52%),linear-gradient(to bottom left,transparent 49%,var(--gold) 50%,transparent 52%)}
+.seal{position:absolute;top:50%;left:50%;width:54px;height:54px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(#9b2335,#5c0f1c);display:grid;place-items:center;box-shadow:0 0 22px #ff5d73;animation:beat 1.6s infinite}
+.pen{display:inline-block;font-size:2rem;animation:write 1.4s ease-in-out infinite alternate}
+@keyframes write{from{transform:rotate(-20deg) translateX(-10px)}to{transform:rotate(15deg) translateX(10px)}}
+
+/* ---- password gate ---- */
+#gate.active{display:flex;align-items:center;justify-content:center}
+.lock{font-size:2.4rem}
+#pw{display:block;width:100%;max-width:260px;margin:14px auto 6px;padding:10px 14px;text-align:center;font:600 1.1rem 'Cairo';letter-spacing:2px;border-radius:30px;border:1px solid var(--gold);background:var(--cream);color:var(--wine)}
+.hint{font-size:.95rem;color:var(--beige);margin-top:10px}
+.err{min-height:1.6em;color:#ff9aa8;font-size:.9rem}
+/* ---- progress dots & tag ---- */
+.dots{display:flex;justify-content:center;gap:10px;margin-bottom:8px}
+.dots i{width:10px;height:10px;border-radius:50%;border:1px solid var(--gold)}
+.dots i.done{background:rgba(198,161,91,.5)}.dots i.on{background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.tag{color:var(--beige);display:block;margin-bottom:14px}
+.detail-box .btn{margin:14px 6px 0}
+
+/* ---- merged finale chapter (scoped with .fin so it never clashes with the museum) ---- */
+:root{--g:#D8B66A;--pink:#f4a6b8}
+#finale.scene{padding:0 0 110px;background:linear-gradient(160deg,#101827,#17191F 50%,#211B24);color:var(--cream)}
+#finale.active{display:block}
+.fin .ph{border:0;color:inherit}
+#player{display:none}
+body.in-finale #player{display:flex}
+body.in-finale #musicBtn{display:none}
+@keyframes wave{to{height:34px}}
+.fin .center{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:50px 16px;text-align:center}
+.fin .reveal{opacity:0;transform:translateY(40px);transition:1.2s ease}
+.fin .reveal.in{opacity:1;transform:none}
+.fin .polaroid{position:relative;width:min(330px,86vw);background:#fbf6ee;padding:14px 14px 18px;transform:rotate(-3deg);box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 40px rgba(216,182,106,.25);color:#3a2a1c}
+.fin .pic{background:#e9dccb;min-height:240px;display:grid;place-items:center}
+.fin .pic img{width:100%;display:block}
+.fin .ph{display:none;padding:30px 10px;font-size:.9rem}
+.fin .pic.missing img{display:none}
+.fin .pic.missing .ph{display:block}
+.fin .polaroid figcaption{margin-top:12px;font-weight:600}
+.fin .tape{position:absolute;top:-14px;left:50%;width:100px;height:28px;transform:translateX(-50%) rotate(2deg);background:rgba(216,182,106,.55)}
+.fin .crown{position:absolute;font-size:2.2rem;top:-42px;right:-10px;transform:rotate(18deg)}
+.fin .gh{position:absolute;font-size:1.3rem;animation:beat 2s infinite}
+.fin .g1{bottom:60px;left:-14px}
+.fin .g2{top:40px;right:-16px}
+.fin .paper{position:relative;max-width:640px;background:linear-gradient(#f9efe0,#f1e0c5);color:#3b2a1a;padding:44px 28px;border:3px double var(--g);outline:1px solid var(--g);outline-offset:-12px;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 50px rgba(216,182,106,.3)}
+.fin .paper h2{color:#8a5a1c;margin-bottom:18px;font-size:clamp(1.3rem,4.5vw,1.8rem)}
+.fin .paper p{margin-bottom:14px;font-size:1.08rem;opacity:0;transform:translateY(12px);transition:.9s}
+.fin .paper p.in{opacity:1;transform:none}
+.fin .corner{position:absolute;width:30px;height:30px;border:3px solid var(--g)}
+.fin .tl{top:6px;right:6px;border-left:0;border-bottom:0}
+.fin .tr{top:6px;left:6px;border-right:0;border-bottom:0}
+.fin .bl{bottom:6px;right:6px;border-left:0;border-top:0}
+.fin .br{bottom:6px;left:6px;border-right:0;border-top:0}
+.fin .crown-s{font-size:2rem;filter:drop-shadow(0 0 10px var(--g))}
+.fin .sign{font-weight:800;color:#8a5a1c;margin-top:20px}
+.fin .ily{font-weight:800;letter-spacing:2px;color:var(--g)}
+.fin .paper .ily{color:#b3243f}
+.fin .voice{width:min(420px,92vw);padding:28px 22px;border-radius:24px;border:1px solid rgba(216,182,106,.5);background:rgba(33,27,36,.8);box-shadow:0 0 40px rgba(216,182,106,.2)}
+.fin .mic{font-size:1.8rem;filter:drop-shadow(0 0 12px var(--pink))}
+.fin .sub{opacity:.75;margin-bottom:12px}
+.fin .vrow{display:flex;align-items:center;justify-content:center;gap:18px;margin:10px 0}
+.fin .round{width:68px;height:68px;border-radius:50%;border:2px solid var(--g);background:radial-gradient(#3b2f3f,#211B24);color:var(--g);font-size:1.5rem;cursor:pointer;box-shadow:0 0 24px rgba(216,182,106,.4)}
+.fin .round.sm{width:44px;height:44px;font-size:1rem}
+.fin .waves,.fin .eq{display:flex;align-items:center;gap:4px;height:40px}
+.fin .waves i,.fin .eq i{width:5px;height:8px;border-radius:3px;background:var(--pink);transition:height .3s}
+.fin .playing i{animation:wave .9s ease-in-out infinite alternate}
+.fin .playing i:nth-child(2n){animation-delay:.2s}
+.fin .playing i:nth-child(3n){animation-delay:.4s}
+.fin .bar{height:6px;border-radius:3px;background:rgba(255,255,255,.15);cursor:pointer;direction:ltr}
+.fin #vFill{height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--g),var(--pink))}
+.fin .times{display:flex;justify-content:space-between;font-size:.85rem;opacity:.8;direction:ltr}
+.fin .err{color:var(--pink);font-size:.85rem}
+.player{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:30;display:flex;align-items:center;gap:12px;padding:8px 18px;border-radius:40px;background:rgba(16,24,39,.92);border:1px solid var(--g);box-shadow:0 0 30px rgba(216,182,106,.3);max-width:94vw}
+.fin .meta{display:flex;flex-direction:column;line-height:1.3}
+.fin .meta small{opacity:.7}
+.fin .eq{height:26px}
+.fin .eq.playing i{animation-name:wave}
+.fin .final h2{font-size:clamp(1.6rem,6vw,2.4rem);color:var(--g);margin:8px 0}
+.fin .glow-heart{font-size:5rem;animation:beat 1.8s infinite;filter:drop-shadow(0 0 30px #D8B66A)}
+
+/* ---- floating stars, hearts and golden sparkles behind the letter ---- */
+#finale .sky{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+#finale .sky span{position:absolute;animation:float linear infinite}
+#finale .sky .star{animation:tw 3s ease-in-out infinite alternate}
+@keyframes float{to{transform:translateY(-115vh);opacity:0}}
+@keyframes tw{from{opacity:.2}to{opacity:1}}
+.fin .center{position:relative;z-index:1}

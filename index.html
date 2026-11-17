@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لسميرة ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="particles" aria-hidden="true"></div>
+<button id="musicBtn" class="music" aria-label="تشغيل / إيقاف الموسيقى">🎵</button>
+
+<!-- Scene 1: museum entrance -->
+<!-- Scene 0: password gate (password = Samira's birthday, checked in script.js) -->
+<section id="gate" class="scene active">
+  <div class="door"><div class="arch">
+    <div class="lock">🔒</div>
+    <h1>المتحف ده ليكي إنتي بس</h1>
+    <p>اكتبي كلمة السر عشان تدخلي</p>
+    <input id="pw" type="text" inputmode="numeric" autocomplete="off" placeholder="يوم / شهر / سنة">
+    <p class="hint">🌙 تنويه: كلمة السر هي اليوم اللي جه فيه القمر بتاعي للدنيا<br><small>(اكتبيه بالأرقام: اليوم ثم الشهر ثم السنة)</small></p>
+    <p class="err" id="pwErr"></p>
+    <button class="btn" id="pwBtn">افتحي المتحف</button>
+  </div></div>
+</section>
+
+<!-- Scene 1: museum entrance -->
+<section id="entrance" class="scene">
+  <div class="spot"></div>
+  <div class="door"><div class="arch">
+    <h1>أهلًا بصاحبة أجمل متحف في العالم ❤️</h1>
+    <p>المكان ده معمول مخصوص عشانك يا كوكو</p>
+    <button class="btn" id="enterBtn">ادخلي يا كوكو ❤️</button>
+  </div></div>
+</section>
+
+<!-- Exhibits are shown one at a time (mug → notebook → letter); filled by script.js -->
+<section id="detail" class="scene"></section>
+
+<!-- Final chapter: "A Letter From Hassan" (photo, letter, voice message, final scene) -->
+<section id="finale" class="scene fin">
+<div class="sky" id="sky" aria-hidden="true"></div>
+
+  <!-- Polaroid photo -->
+  <section class="center">
+    <figure class="polaroid">
+      <span class="tape"></span><span class="crown c1">👑</span><span class="gh g1">💛</span><span class="gh g2">💛</span>
+      <div class="pic" id="pic"><img src="assets/images/couple-photo.jpg" alt="صورتنا"><div class="ph">ضيفي الصورة دي:<br>assets/images/couple-photo.jpg</div></div>
+      <figcaption>صورتنا هتحط هنا 📸<br><b>أحلى سميرة 👑</b></figcaption>
+    </figure>
+  </section>
+
+  <!-- Golden letter -->
+  <section class="center">
+    <article class="paper reveal">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="crown-s">👑</div>
+      <h2>كوكو... يا أجمل حاجة في قلبي 👑</h2>
+      <div id="letterText"></div>
+      <p class="sign">حبيب قلبك سونا، حسن 💛</p>
+      <p class="ily">I LOVE YOU FOREVER ❤️</p>
+    </article>
+  </section>
+
+  <!-- Voice message -->
+  <section class="center">
+    <div class="voice reveal">
+      <div class="mic">🎙️</div>
+      <h3>كلمتين من قلبي ليكي ❤️</h3>
+      <p class="sub">رسالة صوتية خاصة من حسن</p>
+      <div class="vrow">
+        <button id="vBtn" class="round" aria-label="تشغيل الرسالة الصوتية">▶</button>
+        <div class="waves" id="waves"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="bar" id="vBar"><div id="vFill"></div></div>
+      <div class="times"><span id="vCur">0:00</span><span id="vDur">0:00</span></div>
+      <p class="err" id="vErr"></p>
+    </div>
+  </section>
+
+  <!-- Final scene -->
+  <section class="center final reveal">
+    <div class="crown-s">👑</div>
+    <div class="glow-heart">💛</div>
+    <h2>إنتي أجمل حكاية حصلتلي ❤️</h2>
+    <p class="ily">I LOVE YOU FOREVER ❤️</p>
+  </section>
+
+  <div class="center" style="min-height:0;padding-top:0"><button class="btn ghost" id="backBtn">← رجوع للنوتة</button></div>
+</section>
+
+<!-- Song player: letter-song.mp3 is both the background music and this player -->
+<div class="player fin" id="player">
+  <button id="sBtn" class="round sm" aria-label="تشغيل / إيقاف الأغنية">▶</button>
+  <div class="meta"><b>كامل الأوصاف</b><small>عبد الحليم حافظ</small></div>
+  <div class="eq" id="eq"><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
